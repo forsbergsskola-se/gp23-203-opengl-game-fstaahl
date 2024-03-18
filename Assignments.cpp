@@ -1,6 +1,4 @@
-// ASSIGNMENT CPP-OOP CLASSES
-
-#include <iostream>
+/* #include <iostream>
 
 enum class Operation {
     Add,
@@ -13,12 +11,18 @@ class Calculator {
 private:
     int result;
     Operation currentOperation;
+    int currentOperand; // New member variable to store the current operand
 
 public:
-    Calculator() : result(0), currentOperation(Operation::Add) {}
+    Calculator() : result(0), currentOperation(Operation::Add), currentOperand(0) {}
 
     void SetNumber(int number) {
-        result = number;
+        // If current operand is not set, set it
+        if (currentOperand == 0) {
+            currentOperand = number;
+        } else {
+            PerformOperation(number); // Perform operation with current operand
+        }
     }
 
     void SetOperation(Operation op) {
@@ -32,27 +36,30 @@ public:
     void Clear() {
         result = 0;
         currentOperation = Operation::Add;
+        currentOperand = 0;
     }
 
     void PerformOperation(int number) {
         switch (currentOperation) {
             case Operation::Add:
-                result += number;
+                result = currentOperand + number;
                 break;
             case Operation::Subtract:
-                result -= number;
+                result = currentOperand - number;
                 break;
             case Operation::Multiply:
-                result *= number;
+                result = currentOperand * number;
                 break;
             case Operation::Divide:
                 if (number != 0) {
-                    result /= number;
+                    result = currentOperand / number;
                 } else {
                     std::cout << "Error: Division by zero!" << std::endl;
                 }
                 break;
         }
+        // Update current operand for next operation
+        currentOperand = result;
     }
 };
 
@@ -75,3 +82,6 @@ int main() {
     
     return 0;
 }
+*/
+
+
